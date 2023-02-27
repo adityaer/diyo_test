@@ -7,14 +7,14 @@ import '../../../../widgets/custom_elevated_button.dart';
 import '../table_current_bill.dart';
 import '../table_payment.dart';
 
-class TableStatus extends StatefulWidget {
-  const TableStatus({Key? key}) : super(key: key);
+class TableStatusScreen extends StatefulWidget {
+  const TableStatusScreen({Key? key}) : super(key: key);
 
   @override
-  State<TableStatus> createState() => _TableStatusState();
+  State<TableStatusScreen> createState() => _TableStatusScreenState();
 }
 
-class _TableStatusState extends State<TableStatus> {
+class _TableStatusScreenState extends State<TableStatusScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(

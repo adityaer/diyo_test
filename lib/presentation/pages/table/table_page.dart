@@ -23,7 +23,7 @@ class TablePage extends StatelessWidget {
         Expanded(
           flex: 2,
           child: Column(
-            children: const [TableStatus()],
+            children: const [TableStatusScreen()],
           ),
         )
       ],
