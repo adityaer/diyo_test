@@ -5,6 +5,8 @@ import '../models/status_model.dart';
 import 'db/database_helper.dart';
 
 abstract class AppLocalDataSource {
+  Future<bool> isTblTableStatusEmpty();
+
   Future<String> insertStatus(StatusModel statusModel);
 
   Future<StatusModel?> getTableStatusById(int id);
@@ -26,6 +28,16 @@ class AppLocalDataSourceImpl implements AppLocalDataSource {
   final DatabaseHelper databaseHelper;
 
   AppLocalDataSourceImpl({required this.databaseHelper});
+
+  @override
+  Future<bool> isTblTableStatusEmpty() async {
+    try {
+      final result = await databaseHelper.isTblTableStatusEmpty();
+      return result;
+    } catch (e) {
+      throw DatabaseException(e.toString());
+    }
+  }
 
   @override
   Future<String> insertStatus(StatusModel statusModel) async {

@@ -1,5 +1,8 @@
+import 'package:diyo_test/presentation/providers/splashscreen_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../mock_data.dart';
 import '../homepage/homepage.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -13,6 +16,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     super.initState();
+    _insertData();
     startSplashScreen();
   }
 
@@ -26,6 +30,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
         );
       },
     );
+  }
+
+  void _insertData() async {
+    final splashScreenProvider = context.read<SplashScreenNotifier>();
+    await splashScreenProvider.checkTableStatus();
+
+    if (splashScreenProvider.isEmpty) {
+      for (var table in tableList) {
+        splashScreenProvider.insertStatus.execute(table);
+      }
+    }
   }
 
   @override

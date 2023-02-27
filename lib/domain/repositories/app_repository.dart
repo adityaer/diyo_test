@@ -11,6 +11,8 @@ abstract class AppRepository {
 
   // database
 
+  Future<Either<Failure, bool>> isTblTableStatusEmpty();
+
   Future<Either<Failure, String>> insertStatus(TableStatus tableStatus);
 
   Future<Either<Failure, TableStatus>> getTableStatusById(int id);

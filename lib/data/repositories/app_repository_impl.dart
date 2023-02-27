@@ -22,6 +22,18 @@ class AppRepositoryImpl implements AppRepository {
       {required this.remoteDataSource, required this.localDataSource});
 
   @override
+  Future<Either<Failure, bool>> isTblTableStatusEmpty() async {
+    try {
+      final result = await localDataSource.isTblTableStatusEmpty();
+      return Right(result);
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<Menu>>> getMenuList() async {
     try {
       final result = await remoteDataSource.getMenuList();

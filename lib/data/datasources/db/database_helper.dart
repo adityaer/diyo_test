@@ -65,6 +65,15 @@ class DatabaseHelper {
 
   // table status
 
+  Future<bool> isTblTableStatusEmpty() async {
+    final db = await database;
+    List<Map<String, dynamic>> result = await db!.query(
+      _tblTableStatus,
+    );
+
+    return result.isEmpty;
+  }
+
   Future<int> insertStatus(StatusModel status) async {
     final db = await database;
     return await db!.insert(_tblTableStatus, status.toMap());
