@@ -7,6 +7,7 @@ import 'package:diyo_test/presentation/providers/tablepage_notifier.dart';
 import 'package:diyo_test/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'constants/string.dart';
@@ -37,7 +38,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Diyo Test App',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.red,
+            textTheme: GoogleFonts.montserratTextTheme(
+              Theme.of(context).textTheme,
+            ),
           ),
           home: const SplashScreenPage(),
           navigatorObservers: [routeObserver],

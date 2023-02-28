@@ -26,12 +26,16 @@ class TableCurrentBillScreen extends StatelessWidget {
     var order = Order(menu: menu, quantity: 1);
     return Column(
       children: [
-        const Text('Current Bill'),
+        const Text('Current Bill',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
+        SizedBox(height: 15,),
         OrderItem(
           order: order,
           isBilling: true,
         ),
+        SizedBox(height: 15,),
         const TotalOrder(totalPrice: 20000),
+        SizedBox(height: 15,),
         const Divider(
           color: Colors.black,
           height: 10,
@@ -52,7 +56,6 @@ class TableCurrentBillScreen extends StatelessWidget {
           height: 50,
           onTap: () {
             context.read<TablePageNotifier>().updateColumnStatus.execute(id, 4);
-            context.read<TablePageNotifier>().updateRightSidescreen(4);
             context.read<TablePageNotifier>().getSingleTableStatus(id);
             context.read<TablePageNotifier>().fetchTableStatus();
           },

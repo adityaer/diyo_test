@@ -14,7 +14,7 @@ class TablePage extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          flex: 3,
+          flex: 5,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,11 +37,11 @@ class TablePage extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 2,
+          flex: 4,
           child: Column(children: [
             Consumer<TablePageNotifier>(builder: (context, data, child) {
               return TableStatusScreen(
-                id: data.tableId,
+                id: data.tableStatus?.id ?? 1,
               );
             })
           ]),

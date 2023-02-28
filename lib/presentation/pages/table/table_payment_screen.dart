@@ -21,7 +21,8 @@ class _TablePaymentScreenState extends State<TablePaymentScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(StringConstants.action),
+        Text(StringConstants.action,
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
         Column(
           children: [
             RadioListTile<String>(
@@ -73,9 +74,9 @@ class _TablePaymentScreenState extends State<TablePaymentScreen> {
                 .read<TablePageNotifier>()
                 .updateColumnStatus
                 .execute(widget.id, 0);
-            context.read<TablePageNotifier>().updateRightSidescreen(0);
             context.read<TablePageNotifier>().getSingleTableStatus(widget.id);
             context.read<TablePageNotifier>().fetchTableStatus();
+            context.read<TablePageNotifier>().orderList.clear();
           },
           label: StringConstants.payment,
           color: Colors.red,

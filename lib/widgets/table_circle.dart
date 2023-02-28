@@ -21,7 +21,6 @@ class _TableCircleState extends State<TableCircle> {
       child: GestureDetector(
         onTap: () {
           final tablePageProvider = context.read<TablePageNotifier>();
-          tablePageProvider.updateTableChoose(widget.tableStatus.id);
           tablePageProvider.getSingleTableStatus(widget.tableStatus.id);
         },
         child: Container(

@@ -125,7 +125,7 @@ class _PinPageState extends State<PinPage> {
     return SizedBox(
       width: 70,
       height: 70,
-      child: ElevatedButton(
+      child: TextButton(
         onPressed: () {
           setState(() {
             _pin += number;
@@ -134,11 +134,6 @@ class _PinPageState extends State<PinPage> {
             }
           });
         },
-        style: ElevatedButton.styleFrom(
-            primary: Colors.transparent,
-            elevation: 0,
-            shadowColor: Colors.transparent,
-            enableFeedback: false),
         child: Text(
           number,
           style: const TextStyle(fontSize: 28, color: Colors.black),

@@ -2,6 +2,7 @@ import 'package:diyo_test/domain/usecases/get_all_table_status.dart';
 import 'package:diyo_test/domain/usecases/get_table_status.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../domain/entities/order.dart';
 import '../../domain/entities/table_status.dart';
 import '../../domain/usecases/update_column_status.dart';
 import '../../utils/state_enum.dart';
@@ -36,21 +37,14 @@ class TablePageNotifier extends ChangeNotifier {
 
   ////
 
-  int _tableId = 1;
-
-  int get tableId => _tableId;
-
-  ///
-
-  int _rightSideScreen = 0;
-
-  int get rightSideScreen => _rightSideScreen;
-
-  ///
-
   TableStatus? _tableStatus;
 
   TableStatus? get tableStatus => _tableStatus;
+
+  ///
+  List<Order> _orderList = [];
+
+  List<Order> get orderList => _orderList;
 
   Future<void> updateMiddleScreen() async {
     _isTableScreen = !_isTableScreen;
@@ -77,16 +71,6 @@ class TablePageNotifier extends ChangeNotifier {
     );
   }
 
-  void updateTableChoose(int id) {
-    _tableId = id;
-    notifyListeners();
-  }
-
-  void updateRightSidescreen(int screen) {
-    _rightSideScreen = screen;
-    notifyListeners();
-  }
-
   Future<void> getSingleTableStatus(int id) async {
     _state = RequestState.Loading;
     notifyListeners();
@@ -105,5 +89,40 @@ class TablePageNotifier extends ChangeNotifier {
         notifyListeners();
       },
     );
+  }
+
+  Future<void> addOrder(Order order) async {
+    if (_orderList.isEmpty) {
+      _orderList.add(order);
+    } else {
+      var isMenuExist = false;
+      for (var orderData in _orderList) {
+        if (order.menu.id == orderData.menu.id) {
+          orderData.quantity = orderData.quantity + 1;
+          isMenuExist = !isMenuExist;
+          break;
+        }
+      }
+
+      if (!isMenuExist) {
+        _orderList.add(order);
+      }
+    }
+    notifyListeners();
+  }
+
+  Future<void> decreaseOrder(Order order) async {
+    if (_orderList.isNotEmpty) {
+      for (var orderData in _orderList) {
+        if (order.menu.id == orderData.menu.id) {
+          orderData.quantity = orderData.quantity - 1;
+          if (orderData.quantity == 0) {
+            _orderList.remove(orderData);
+          }
+          break;
+        }
+      }
+    }
+    notifyListeners();
   }
 }

@@ -16,7 +16,7 @@ class TablePrintQRScreen extends StatelessWidget {
       children: [
         Text(
           StringConstants.action,
-          style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
         ),
         const SizedBox(
           height: 20,
@@ -26,7 +26,6 @@ class TablePrintQRScreen extends StatelessWidget {
           height: 50,
           onTap: () {
             context.read<TablePageNotifier>().updateColumnStatus.execute(id, 1);
-            context.read<TablePageNotifier>().updateRightSidescreen(1);
             context.read<TablePageNotifier>().getSingleTableStatus(id);
             context.read<TablePageNotifier>().fetchTableStatus();
           },

@@ -17,7 +17,6 @@ class TableMakeOrderScreen extends StatelessWidget {
       onTap: () {
         context.read<TablePageNotifier>().updateColumnStatus.execute(id, 2);
         context.read<TablePageNotifier>().updateMiddleScreen();
-        context.read<TablePageNotifier>().updateRightSidescreen(2);
         context.read<TablePageNotifier>().getSingleTableStatus(id);
       },
       label: StringConstants.makeAnOrder,

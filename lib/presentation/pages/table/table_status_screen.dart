@@ -35,45 +35,46 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
             ),
             Row(
               children: [
-                Text(StringConstants.statusText),
-                Text((() {
-                  switch //(data.rightSideScreen) {
-                      (data.tableStatus?.status) {
-                    case 0:
-                      return StringConstants.available;
-                    case 1:
-                      return StringConstants.seated;
-                    case 2:
-                      return StringConstants.seated;
-                    case 3:
-                      return StringConstants.ordered;
-                    case 4:
-                      return StringConstants.billing;
-                    default:
-                      return StringConstants.available;
-                  }
-                })())
+                Text(
+                  '${StringConstants.statusText}${(() {
+                    switch (data.tableStatus?.status) {
+                      case 0:
+                        return StringConstants.available;
+                      case 1:
+                        return StringConstants.seated;
+                      case 2:
+                        return StringConstants.seated;
+                      case 3:
+                        return StringConstants.ordered;
+                      case 4:
+                        return StringConstants.billing;
+                      default:
+                        return StringConstants.available;
+                    }
+                  })()}',
+                  style: const TextStyle(
+                      fontSize: 17, fontWeight: FontWeight.w400),
+                )
               ],
             ),
             const SizedBox(
               height: 20,
             ),
             SingleChildScrollView(child: (() {
-              switch //(data.rightSideScreen) {
-                  (data.tableStatus?.status) {
+              switch (data.tableStatus?.status) {
                 case 0:
-                  return TablePrintQRScreen(id: data.tableId);
+                  return TablePrintQRScreen(id: data.tableStatus?.id ?? 1);
                 case 1:
-                  return TableMakeOrderScreen(id: data.tableId);
+                  return TableMakeOrderScreen(id: data.tableStatus?.id ?? 1);
                 case 2:
-                  return TableAddOrderScreen(id: data.tableId);
+                  return TableAddOrderScreen(id: data.tableStatus?.id ?? 1);
                 case 3:
-                  return TableCurrentBillScreen(id: data.tableId);
+                  return TableCurrentBillScreen(id: data.tableStatus?.id ?? 1);
                 case 4:
-                  return TablePaymentScreen(id: data.tableId);
+                  return TablePaymentScreen(id: data.tableStatus?.id ?? 1);
                 default:
                   return TablePrintQRScreen(
-                    id: data.tableId,
+                    id: data.tableStatus?.id ?? 1,
                   );
               }
             })())

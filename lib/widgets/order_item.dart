@@ -1,7 +1,9 @@
 import 'package:diyo_test/extension/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../domain/entities/order.dart';
+import '../presentation/providers/tablepage_notifier.dart';
 
 class OrderItem extends StatelessWidget {
   final Order order;
@@ -29,7 +31,10 @@ class OrderItem extends StatelessWidget {
         Visibility(
             visible: !isBilling,
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  order.quantity = 1;
+                  context.read<TablePageNotifier>().decreaseOrder(order);
+                },
                 icon: const Icon(
                   Icons.remove_circle_outline,
                   color: Colors.red,
