@@ -19,7 +19,7 @@ class TablePage extends StatelessWidget {
             children: [
               Consumer<TablePageNotifier>(builder: (context, data, child) {
                 return data.isTableScreen
-                    ? TableAvailability()
+                    ? const TableAvailability()
                     : const MenuScreen();
               })
             ],
@@ -28,7 +28,11 @@ class TablePage extends StatelessWidget {
         Expanded(
           flex: 2,
           child: Column(
-            children: const [TableStatusScreen()],
+            children: [
+              Consumer<TablePageNotifier>(builder: (context, data, child) {
+                return TableStatusScreen(id: data.tableId,);
+              })
+            ]//const [TableStatusScreen()],
           ),
         )
       ],

@@ -1,13 +1,16 @@
 import 'package:diyo_test/widgets/order_item.dart';
 import 'package:diyo_test/widgets/total_order.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../domain/entities/menu.dart';
 import '../../../domain/entities/order.dart';
 import '../../../widgets/custom_elevated_button.dart';
+import '../../providers/tablepage_notifier.dart';
 
 class TableCurrentBill extends StatelessWidget {
-  const TableCurrentBill({Key? key}) : super(key: key);
+  final int id;
+  const TableCurrentBill({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,10 @@ class TableCurrentBill extends StatelessWidget {
         ),
         CustomElevatedButton(
           height: 30,
-          onTap: () {},
+          onTap: () {
+            context.read<TablePageNotifier>().updateColumnStatus.execute(id, 4);
+            context.read<TablePageNotifier>().updateRightSidescreen(4);
+          },
           label: 'Billing',
         )
       ],

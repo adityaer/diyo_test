@@ -1,13 +1,17 @@
 import 'package:diyo_test/widgets/order_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../domain/entities/menu.dart';
 import '../../../domain/entities/order.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/total_order.dart';
+import '../../providers/tablepage_notifier.dart';
 
 class TableAddOrder extends StatelessWidget {
-  const TableAddOrder({Key? key}) : super(key: key);
+
+  final int id;
+  const TableAddOrder({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,11 @@ class TableAddOrder extends StatelessWidget {
         const TotalOrder(totalPrice: 20000),
         CustomElevatedButton(
           height: 30,
-          onTap: () {},
+          onTap: () {
+            context.read<TablePageNotifier>().updateColumnStatus.execute(id, 3);
+            context.read<TablePageNotifier>().updateMiddleScreen();
+            context.read<TablePageNotifier>().updateRightSidescreen(3);
+          },
           label: 'Add Order',
           color: Colors.red,
         )

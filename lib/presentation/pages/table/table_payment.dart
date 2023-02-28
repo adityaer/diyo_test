@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../widgets/custom_elevated_button.dart';
+import '../../providers/tablepage_notifier.dart';
 
 class TablePayment extends StatefulWidget {
-  const TablePayment({Key? key}) : super(key: key);
+  final int id;
+  const TablePayment({Key? key, required this.id}) : super(key: key);
 
   @override
   State<TablePayment> createState() => _TablePaymentState();
@@ -63,7 +66,10 @@ class _TablePaymentState extends State<TablePayment> {
         ),
         CustomElevatedButton(
           height: 30,
-          onTap: () {},
+          onTap: () {
+            context.read<TablePageNotifier>().updateColumnStatus.execute(widget.id, 0);
+            context.read<TablePageNotifier>().updateRightSidescreen(0);
+          },
           label: 'Payment',
           color: Colors.red,
         )

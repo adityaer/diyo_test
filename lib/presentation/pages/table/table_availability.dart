@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../widgets/table_circle.dart';
-import '../../providers/menu_list_notifier.dart';
 
 class TableAvailability extends StatefulWidget {
   const TableAvailability({super.key});
@@ -24,19 +23,18 @@ class _TableAvailabilityState extends State<TableAvailability> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Consumer<TablePageNotifier>(builder: (context, data, child) {
-        return GridView.count(
-          crossAxisCount: 3,
-          children: <Widget>[
-            for (var table in data.tableStatusList)
-              TableCircle(
-                tableName: table.tableName!,
-                status: table.status!,
-              ),
-          ],
-        );
-      })
-      /*GridView.count(
+        child: Consumer<TablePageNotifier>(builder: (context, data, child) {
+      return GridView.count(
+        crossAxisCount: 3,
+        children: <Widget>[
+          for (var table in data.tableStatusList)
+            TableCircle(
+              tableStatus: table,
+            ),
+        ],
+      );
+    })
+        /*GridView.count(
         crossAxisCount: 3,
         children: <Widget>[
           for (int i = 0; i < 7; i++)
@@ -46,6 +44,6 @@ class _TableAvailabilityState extends State<TableAvailability> {
             ),
         ],
       ),*/
-    );
+        );
   }
 }

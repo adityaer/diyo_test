@@ -1,9 +1,10 @@
 import 'package:diyo_test/presentation/providers/splashscreen_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../mock_data.dart';
-import '../homepage/homepage.dart';
+import '../login/pin_page.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -16,6 +17,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     _insertData();
     startSplashScreen();
   }
@@ -26,7 +32,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       () {
         Navigator.pushNamed(
           context,
-          HomePage.routeName,
+          PinPage.routeName,
         );
       },
     );

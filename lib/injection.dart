@@ -47,7 +47,7 @@ void init() {
   );
 
   locator.registerFactory(
-    () => TablePageNotifier(locator()),
+    () => TablePageNotifier(locator(), locator(), locator()),
   );
 
   locator.registerLazySingleton(() => CheckTblTableStatus(locator()));

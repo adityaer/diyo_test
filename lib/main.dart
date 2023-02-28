@@ -1,4 +1,5 @@
 import 'package:diyo_test/presentation/pages/homepage/homepage.dart';
+import 'package:diyo_test/presentation/pages/login/pin_page.dart';
 import 'package:diyo_test/presentation/pages/splashscreen/splash_screen.dart';
 import 'package:diyo_test/presentation/providers/menu_list_notifier.dart';
 import 'package:diyo_test/presentation/providers/splashscreen_notifier.dart';
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
             switch (settings.name) {
               case HomePage.routeName:
                 return MaterialPageRoute(builder: (_) => const HomePage());
+              case PinPage.routeName:
+                return MaterialPageRoute(builder: (_) => PinPage());
               default:
                 return MaterialPageRoute(builder: (_) {
                   return const Scaffold(

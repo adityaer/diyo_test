@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../widgets/custom_elevated_button.dart';
+import '../../providers/tablepage_notifier.dart';
 
 class TableMakeOrder extends StatelessWidget {
-  const TableMakeOrder({Key? key}) : super(key: key);
+  final int id;
+
+  const TableMakeOrder({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomElevatedButton(
       height: 30,
-      onTap: () {},
+      onTap: () {
+        context.read<TablePageNotifier>().updateColumnStatus.execute(id, 2);
+        context.read<TablePageNotifier>().updateMiddleScreen();
+        context.read<TablePageNotifier>().updateRightSidescreen(2);
+      },
       label: 'Make an Order',
       color: Colors.red,
     );
