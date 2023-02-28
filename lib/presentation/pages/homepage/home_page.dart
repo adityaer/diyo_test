@@ -136,9 +136,6 @@ class HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       children: <Widget>[
-                        const Icon(Icons.power_settings_new,
-                            color: Colors.white, size: 20),
-                        Container(width: 20),
                         Expanded(
                             child: Text(
                           StringConstants.logout,

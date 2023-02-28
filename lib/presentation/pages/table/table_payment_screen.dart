@@ -15,7 +15,7 @@ class TablePaymentScreen extends StatefulWidget {
 }
 
 class _TablePaymentScreenState extends State<TablePaymentScreen> {
-  String gender = "";
+  String paymentType = "cash";
 
   @override
   Widget build(BuildContext context) {
@@ -28,47 +28,51 @@ class _TablePaymentScreenState extends State<TablePaymentScreen> {
             RadioListTile<String>(
               title: Text(StringConstants.cash),
               value: "cash",
-              groupValue: gender,
+              dense: true,
+              groupValue: paymentType,
               onChanged: (value) {
                 setState(() {
-                  gender = value.toString();
+                  paymentType = value.toString();
                 });
               },
             ),
             RadioListTile<String>(
               title: Text(StringConstants.creditCard),
               value: "cc",
-              groupValue: gender,
+              dense: true,
+              groupValue: paymentType,
               onChanged: (value) {
                 setState(() {
-                  gender = value.toString();
+                  paymentType = value.toString();
                 });
               },
             ),
             RadioListTile<String>(
+              dense: true,
               title: Text(StringConstants.debitCard),
               value: "debit",
-              groupValue: gender,
+              groupValue: paymentType,
               onChanged: (value) {
                 setState(() {
-                  gender = value.toString();
+                  paymentType = value.toString();
                 });
               },
             ),
             RadioListTile<String>(
               title: Text(StringConstants.qris),
               value: "qris",
-              groupValue: gender,
+              dense: true,
+              groupValue: paymentType,
               onChanged: (value) {
                 setState(() {
-                  gender = value.toString();
+                  paymentType = value.toString();
                 });
               },
             )
           ],
         ),
         CustomElevatedButton(
-          height: 30,
+          height: 50,
           onTap: () {
             context
                 .read<TablePageNotifier>()
@@ -76,7 +80,6 @@ class _TablePaymentScreenState extends State<TablePaymentScreen> {
                 .execute(widget.id, 0);
             context.read<TablePageNotifier>().getSingleTableStatus(widget.id);
             context.read<TablePageNotifier>().fetchTableStatus();
-            context.read<TablePageNotifier>().orderList.clear();
           },
           label: StringConstants.payment,
           color: Colors.red,

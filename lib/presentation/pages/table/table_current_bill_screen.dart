@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants/string.dart';
-import '../../../domain/entities/menu.dart';
-import '../../../domain/entities/order.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../providers/tablepage_notifier.dart';
 
@@ -16,36 +14,45 @@ class TableCurrentBillScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var menu = const Menu(
-        id: 1,
-        name: "Nasi Goreng",
-        price: 15000,
-        image:
-            "https://kbu-cdn.com/dk/wp-content/uploads/nasi-goreng-kencur-kemangi.jpg");
-
-    var order = Order(menu: menu, quantity: 1);
     return Column(
       children: [
-        const Text('Current Bill',
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
-        SizedBox(height: 15,),
-        OrderItem(
-          order: order,
-          isBilling: true,
+        Text(StringConstants.currentBilling,
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
+        const SizedBox(
+          height: 15,
         ),
-        SizedBox(height: 15,),
+        Consumer<TablePageNotifier>(builder: (context, data, child) {
+          return ListView.builder(
+            itemCount: data.orderList.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final order = data.orderList[index];
+              return OrderItem(
+                order: order,
+                isBilling: true,
+              );
+            },
+          );
+        }),
+        const SizedBox(
+          height: 10,
+        ),
         const TotalOrder(totalPrice: 20000),
-        SizedBox(height: 15,),
+        const SizedBox(height: 10),
         const Divider(
           color: Colors.black,
           height: 10,
           thickness: 1,
         ),
         CustomElevatedButton(
-          margin: EdgeInsets.symmetric(vertical: 15),
+          margin: const EdgeInsets.symmetric(vertical: 15),
           color: Colors.red,
           height: 50,
-          onTap: () {},
+          onTap: () {
+            context.read<TablePageNotifier>().updateColumnStatus.execute(id, 2);
+            context.read<TablePageNotifier>().updateMiddleScreen();
+            context.read<TablePageNotifier>().getSingleTableStatus(id);
+          },
           label: StringConstants.addOrder,
         ),
         const SizedBox(
@@ -58,6 +65,8 @@ class TableCurrentBillScreen extends StatelessWidget {
             context.read<TablePageNotifier>().updateColumnStatus.execute(id, 4);
             context.read<TablePageNotifier>().getSingleTableStatus(id);
             context.read<TablePageNotifier>().fetchTableStatus();
+            context.read<TablePageNotifier>().orderList.clear();
+            context.read<TablePageNotifier>().resetTotalPrice();
           },
           label: StringConstants.billing,
         )

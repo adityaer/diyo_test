@@ -22,7 +22,7 @@ class OrderItem extends StatelessWidget {
         ),
         Expanded(
           flex: 1,
-          child: Text(order.quantity.toString()),
+          child: Text(' x${order.quantity}'),
         ),
         Expanded(
           flex: 2,
@@ -32,7 +32,6 @@ class OrderItem extends StatelessWidget {
             visible: !isBilling,
             child: IconButton(
                 onPressed: () {
-                  order.quantity = 1;
                   context.read<TablePageNotifier>().decreaseOrder(order);
                 },
                 icon: const Icon(

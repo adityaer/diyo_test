@@ -12,8 +12,8 @@ class TablePageNotifier extends ChangeNotifier {
   final GetTableStatus getTableStatus;
   final UpdateColumnStatus updateColumnStatus;
 
-  TablePageNotifier(
-      this.getAllTableStatus, this.getTableStatus, this.updateColumnStatus);
+  TablePageNotifier(this.getAllTableStatus, this.getTableStatus,
+      this.updateColumnStatus);
 
   ////
 
@@ -46,6 +46,11 @@ class TablePageNotifier extends ChangeNotifier {
 
   List<Order> get orderList => _orderList;
 
+  ///
+  int _totalPrice = 0;
+
+  int get totalPrice => _totalPrice;
+
   Future<void> updateMiddleScreen() async {
     _isTableScreen = !_isTableScreen;
     notifyListeners();
@@ -58,12 +63,12 @@ class TablePageNotifier extends ChangeNotifier {
     final result = await getAllTableStatus.execute();
 
     result.fold(
-      (failure) {
+          (failure) {
         _message = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
-      (tableStatusList) {
+          (tableStatusList) {
         _tableStatusList = tableStatusList;
         _state = RequestState.Loaded;
         notifyListeners();
@@ -78,12 +83,12 @@ class TablePageNotifier extends ChangeNotifier {
     final result = await getTableStatus.execute(id);
 
     result.fold(
-      (failure) {
+          (failure) {
         _message = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
-      (tableStatus) {
+          (tableStatus) {
         _tableStatus = tableStatus;
         _state = RequestState.Loaded;
         notifyListeners();
@@ -108,6 +113,7 @@ class TablePageNotifier extends ChangeNotifier {
         _orderList.add(order);
       }
     }
+    calculateTotalPrice();
     notifyListeners();
   }
 
@@ -123,6 +129,19 @@ class TablePageNotifier extends ChangeNotifier {
         }
       }
     }
+    calculateTotalPrice();
     notifyListeners();
+  }
+
+  void calculateTotalPrice() {
+    var priceTemp = 0;
+    for (var order in _orderList) {
+      priceTemp = priceTemp + (order.quantity * order.menu.price);
+    }
+    _totalPrice = priceTemp;
+  }
+
+  void resetTotalPrice() {
+    _totalPrice = 0;
   }
 }

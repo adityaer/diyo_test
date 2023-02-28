@@ -1,5 +1,8 @@
 import 'package:diyo_test/extension/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../presentation/providers/tablepage_notifier.dart';
 
 class TotalOrder extends StatelessWidget {
   final int totalPrice;
@@ -10,13 +13,15 @@ class TotalOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text("Total", style: TextStyle(
-          fontWeight: FontWeight.w600
-        ),),
+        const Text(
+          "Total",
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
         const Spacer(),
-        Text(totalPrice.toCurrencyString(), style: const TextStyle(
-            fontWeight: FontWeight.w600
-        ))
+        Consumer<TablePageNotifier>(builder: (context, data, child) {
+          return Text(data.totalPrice.toCurrencyString(),
+              style: const TextStyle(fontWeight: FontWeight.w600));
+        })
       ],
     );
   }

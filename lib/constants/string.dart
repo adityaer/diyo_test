@@ -11,6 +11,7 @@ class StringConstants {
   static String addOrder = 'Add Order';
   static String orderedMenu = 'Ordered Menu';
   static String billing = 'Billing';
+  static String currentBilling = 'Current Billing';
   static String makeAnOrder = 'Make an Order';
   static String action = 'Action';
   static String cash = 'Cash';
