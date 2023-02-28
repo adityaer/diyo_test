@@ -1,5 +1,4 @@
 class StringConstants {
-
   static String pageNotFound = 'Page not found :(';
   static String home = 'Home';
   static String orderQueue = 'Order Queue';

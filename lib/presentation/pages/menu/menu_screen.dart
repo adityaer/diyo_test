@@ -42,7 +42,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
             ],
           ),
-        ); //MovieList(data.movies);
+        );
       } else {
         return const SizedBox(
           height: 150,

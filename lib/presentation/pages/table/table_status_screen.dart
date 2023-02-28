@@ -28,7 +28,7 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25),
               child: Text(
-                '${data.tableStatus?.tableName}',
+                '${data.tableStatus?.tableName ?? 'No Table'}',
                 style:
                     const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
               ),

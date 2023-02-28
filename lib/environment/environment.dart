@@ -16,8 +16,4 @@ class Environment {
   static String get baseUrl {
     return dotenv.env['BASE_URL'] ?? 'BASE_URL not found';
   }
-
-  static String get apiKey {
-    return dotenv.env['API_KEY'] ?? 'API_KEY not found';
-  }
 }

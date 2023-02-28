@@ -14,7 +14,7 @@ class AvailabilityLegend extends StatelessWidget {
         SizedBox(
           width: 10,
         ),
-        Text('Test')
+        Text('')
       ],
     );
   }

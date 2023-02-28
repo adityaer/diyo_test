@@ -140,7 +140,8 @@ class DatabaseHelper {
     return await db!.insert(_tblTableOrder, order.toMap());
   }
 
-  Future<Map<String, dynamic>?> getTableOrderById(int id, String orderId) async {
+  Future<Map<String, dynamic>?> getTableOrderById(
+      int id, String orderId) async {
     final db = await database;
     final results = await db!.query(
       _tblTableOrder,
@@ -162,7 +163,8 @@ class DatabaseHelper {
     return await db!.insert(_tblTableBilling, billing.toMap());
   }
 
-  Future<Map<String, dynamic>?> getTableBillingById(int id, String orderId) async {
+  Future<Map<String, dynamic>?> getTableBillingById(
+      int id, String orderId) async {
     final db = await database;
     final results = await db!.query(
       _tblTableBilling,

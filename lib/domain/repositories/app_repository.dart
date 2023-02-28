@@ -28,5 +28,6 @@ abstract class AppRepository {
 
   Future<Either<Failure, String>> insertBilling(TableBilling tableBilling);
 
-  Future<Either<Failure, TableBilling>> getTableBillingById(int id, String orderId);
+  Future<Either<Failure, TableBilling>> getTableBillingById(
+      int id, String orderId);
 }

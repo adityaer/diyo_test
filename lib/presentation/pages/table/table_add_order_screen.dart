@@ -14,14 +14,6 @@ class TableAddOrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*var menu = const Menu(
-        id: 1,
-        name: "Nasi Goreng",
-        price: 15000,
-        image:
-            "https://kbu-cdn.com/dk/wp-content/uploads/nasi-goreng-kencur-kemangi.jpg");
-
-    var order = Order(menu: menu, quantity: 1);*/
     return Column(
       children: [
         Text(

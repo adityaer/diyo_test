@@ -12,8 +12,8 @@ class TablePageNotifier extends ChangeNotifier {
   final GetTableStatus getTableStatus;
   final UpdateColumnStatus updateColumnStatus;
 
-  TablePageNotifier(this.getAllTableStatus, this.getTableStatus,
-      this.updateColumnStatus);
+  TablePageNotifier(
+      this.getAllTableStatus, this.getTableStatus, this.updateColumnStatus);
 
   ////
 
@@ -63,12 +63,12 @@ class TablePageNotifier extends ChangeNotifier {
     final result = await getAllTableStatus.execute();
 
     result.fold(
-          (failure) {
+      (failure) {
         _message = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
-          (tableStatusList) {
+      (tableStatusList) {
         _tableStatusList = tableStatusList;
         _state = RequestState.Loaded;
         notifyListeners();
@@ -83,12 +83,12 @@ class TablePageNotifier extends ChangeNotifier {
     final result = await getTableStatus.execute(id);
 
     result.fold(
-          (failure) {
+      (failure) {
         _message = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
-          (tableStatus) {
+      (tableStatus) {
         _tableStatus = tableStatus;
         _state = RequestState.Loaded;
         notifyListeners();

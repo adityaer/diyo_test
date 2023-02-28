@@ -8,6 +8,8 @@ import '../homepage/home_page.dart';
 class PinPage extends StatefulWidget {
   static const routeName = '/pin_page';
 
+  const PinPage({super.key});
+
   @override
   _PinPageState createState() => _PinPageState();
 }
@@ -44,13 +46,13 @@ class _PinPageState extends State<PinPage> {
           ),
           Text(
             StringConstants.enterPIN,
-            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
           ),
           const SizedBox(
             height: 20,
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
