@@ -33,11 +33,13 @@ class TableAddOrderScreen extends StatelessWidget {
         ),
         const TotalOrder(totalPrice: 20000),
         CustomElevatedButton(
-          height: 30,
+          height: 50,
           onTap: () {
             context.read<TablePageNotifier>().updateColumnStatus.execute(id, 3);
             context.read<TablePageNotifier>().updateMiddleScreen();
             context.read<TablePageNotifier>().updateRightSidescreen(3);
+            context.read<TablePageNotifier>().getSingleTableStatus(id);
+            context.read<TablePageNotifier>().fetchTableStatus();
           },
           label: StringConstants.addOrder,
           color: Colors.red,

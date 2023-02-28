@@ -88,7 +88,6 @@ class TablePageNotifier extends ChangeNotifier {
   }
 
   Future<void> getSingleTableStatus(int id) async {
-    print('memanggil');
     _state = RequestState.Loading;
     notifyListeners();
 

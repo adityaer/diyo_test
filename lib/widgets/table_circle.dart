@@ -22,6 +22,7 @@ class _TableCircleState extends State<TableCircle> {
         onTap: () {
           final tablePageProvider = context.read<TablePageNotifier>();
           tablePageProvider.updateTableChoose(widget.tableStatus.id);
+          tablePageProvider.getSingleTableStatus(widget.tableStatus.id);
         },
         child: Container(
           width: 60,
@@ -60,7 +61,7 @@ class _TableCircleState extends State<TableCircle> {
                   default:
                     return Colors.white;
                 }
-              })(), // warna garis border
+              })(),
               width: 2.0,
             ),
           ),

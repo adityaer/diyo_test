@@ -10,7 +10,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 import 'constants/string.dart';
-import 'environtment/environment.dart';
+import 'environment/environment.dart';
 import 'injection.dart' as di;
 
 void main() async {

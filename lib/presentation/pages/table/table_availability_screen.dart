@@ -8,10 +8,15 @@ class TableAvailabilityScreen extends StatefulWidget {
   const TableAvailabilityScreen({super.key});
 
   @override
-  State<TableAvailabilityScreen> createState() => _TableAvailabilityScreenState();
+  State<TableAvailabilityScreen> createState() =>
+      _TableAvailabilityScreenState();
 }
 
 class _TableAvailabilityScreenState extends State<TableAvailabilityScreen> {
+  void refreshState() {
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();

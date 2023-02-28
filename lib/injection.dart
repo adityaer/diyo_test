@@ -20,7 +20,7 @@ import 'domain/usecases/get_menu_list.dart';
 import 'domain/usecases/insert_order.dart';
 import 'domain/usecases/insert_status.dart';
 import 'domain/usecases/update_column_order_id.dart';
-import 'environtment/environment.dart';
+import 'environment/environment.dart';
 
 final locator = GetIt.instance;
 

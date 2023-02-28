@@ -74,6 +74,8 @@ class _TablePaymentScreenState extends State<TablePaymentScreen> {
                 .updateColumnStatus
                 .execute(widget.id, 0);
             context.read<TablePageNotifier>().updateRightSidescreen(0);
+            context.read<TablePageNotifier>().getSingleTableStatus(widget.id);
+            context.read<TablePageNotifier>().fetchTableStatus();
           },
           label: StringConstants.payment,
           color: Colors.red,

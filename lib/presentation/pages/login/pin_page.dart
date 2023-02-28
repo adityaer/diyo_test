@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../constants/string.dart';
@@ -13,6 +14,15 @@ class PinPage extends StatefulWidget {
 
 class _PinPageState extends State<PinPage> {
   String _pin = '';
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +158,9 @@ class _PinPageState extends State<PinPage> {
           textColor: Colors.white,
           fontSize: 16.0);
 
-      Navigator.pushNamed(
+      _pin = '';
+
+      Navigator.pushReplacementNamed(
         context,
         HomePage.routeName,
       );

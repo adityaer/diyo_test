@@ -38,7 +38,9 @@ class TableCurrentBillScreen extends StatelessWidget {
           thickness: 1,
         ),
         CustomElevatedButton(
-          height: 30,
+          margin: EdgeInsets.symmetric(vertical: 15),
+          color: Colors.red,
+          height: 50,
           onTap: () {},
           label: StringConstants.addOrder,
         ),
@@ -46,10 +48,13 @@ class TableCurrentBillScreen extends StatelessWidget {
           height: 10,
         ),
         CustomElevatedButton(
-          height: 30,
+          color: Colors.red,
+          height: 50,
           onTap: () {
             context.read<TablePageNotifier>().updateColumnStatus.execute(id, 4);
             context.read<TablePageNotifier>().updateRightSidescreen(4);
+            context.read<TablePageNotifier>().getSingleTableStatus(id);
+            context.read<TablePageNotifier>().fetchTableStatus();
           },
           label: StringConstants.billing,
         )

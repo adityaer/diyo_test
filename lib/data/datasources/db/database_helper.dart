@@ -102,7 +102,6 @@ class DatabaseHelper {
   }
 
   Future<void> updateColumnStatus(int id, int newStatus) async {
-    print('masuk kesini loh');
     final db = await database;
     int rowsAffected = await db!.update(
       _tblTableStatus,

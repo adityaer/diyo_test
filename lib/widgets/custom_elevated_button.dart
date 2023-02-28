@@ -23,7 +23,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.isLoading = false,
     this.width = double.infinity,
     this.height = 47,
-    this.labelSize,
+    this.labelSize = 17,
     this.margin,
   }) : super(key: key);
 
@@ -40,7 +40,7 @@ class CustomElevatedButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: color ?? theme.primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(25),
           ),
         ),
         child: (isLoading == true)
@@ -60,10 +60,13 @@ class CustomElevatedButton extends StatelessWidget {
               )
             : (label == '' || label == null)
                 ? child
-                : Text(
-                    label ?? '',
-                    style: theme.textTheme.button
-                        ?.copyWith(fontSize: labelSize, color: Colors.white),
+                : Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      label ?? '',
+                      style: theme.textTheme.button
+                          ?.copyWith(fontSize: labelSize, color: Colors.white),
+                    ),
                   ),
       ),
     );

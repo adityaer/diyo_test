@@ -1,4 +1,5 @@
 import 'package:diyo_test/constants/string.dart';
+import 'package:diyo_test/presentation/pages/login/pin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../table/table_page.dart';
@@ -124,7 +125,12 @@ class HomePageState extends State<HomePage> {
                 ),
                 Container(height: 10),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      PinPage.routeName,
+                    );
+                  },
                   child: Container(
                     height: 40,
                     padding: const EdgeInsets.symmetric(horizontal: 20),

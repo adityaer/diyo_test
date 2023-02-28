@@ -13,11 +13,12 @@ class TableMakeOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomElevatedButton(
-      height: 30,
+      height: 50,
       onTap: () {
         context.read<TablePageNotifier>().updateColumnStatus.execute(id, 2);
         context.read<TablePageNotifier>().updateMiddleScreen();
         context.read<TablePageNotifier>().updateRightSidescreen(2);
+        context.read<TablePageNotifier>().getSingleTableStatus(id);
       },
       label: StringConstants.makeAnOrder,
       color: Colors.red,

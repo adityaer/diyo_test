@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../environtment/environment.dart';
+import '../../environment/environment.dart';
 import '../../utils/exception.dart';
 import '../models/menu_list_response.dart';
 

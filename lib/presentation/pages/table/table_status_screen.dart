@@ -19,72 +19,66 @@ class TableStatusScreen extends StatefulWidget {
 
 class _TableStatusScreenState extends State<TableStatusScreen> {
   @override
-  void initState() {
-    super.initState();
-    Future.microtask(() {
-      print('masuk microtask');
-      //Provider.of<TablePageNotifier>(context, listen: false)
-      //    .getSingleTableStatus(widget.id);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Consumer<TablePageNotifier>(builder: (context, data, child) {
-      if (data.tableId != data.tableStatus?.id) {
-        data.getSingleTableStatus(data.tableId);
-      }
-      return Column(
-        children: [
-          Padding(padding:const EdgeInsets.symmetric(vertical: 25), child: Text(
-            'Table ${data.tableStatus?.id}',
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
-          ),),
-          Row(
-            children: [
-              Text(StringConstants.statusText),
-              Text((() {
-                switch (data.rightSideScreen) {
-                //(data.tableStatus?.status) {
-                  case 0:
-                    return StringConstants.available;
-                  case 1:
-                    return StringConstants.seated;
-                  case 2:
-                    return StringConstants.seated;
-                  case 3:
-                    return StringConstants.ordered;
-                  case 4:
-                    return StringConstants.billing;
-                  default:
-                    return StringConstants.available;
-                }
-              })())
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          SingleChildScrollView(child: (() {
-            switch (data.rightSideScreen) {
-            //(data.tableStatus?.status) {
-              case 0:
-                return TablePrintQRScreen(id: data.tableId);
-              case 1:
-                return TableMakeOrderScreen(id: data.tableId);
-              case 2:
-                return TableAddOrderScreen(id: data.tableId);
-              case 3:
-                return TableCurrentBillScreen(id: data.tableId);
-              case 4:
-                return TablePaymentScreen(id: data.tableId);
-              default:
-                return TablePrintQRScreen(
-                  id: data.tableId,
-                );
-            }
-          })())
-        ],
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 25),
+              child: Text(
+                '${data.tableStatus?.tableName}',
+                style:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+              ),
+            ),
+            Row(
+              children: [
+                Text(StringConstants.statusText),
+                Text((() {
+                  switch //(data.rightSideScreen) {
+                      (data.tableStatus?.status) {
+                    case 0:
+                      return StringConstants.available;
+                    case 1:
+                      return StringConstants.seated;
+                    case 2:
+                      return StringConstants.seated;
+                    case 3:
+                      return StringConstants.ordered;
+                    case 4:
+                      return StringConstants.billing;
+                    default:
+                      return StringConstants.available;
+                  }
+                })())
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SingleChildScrollView(child: (() {
+              switch //(data.rightSideScreen) {
+                  (data.tableStatus?.status) {
+                case 0:
+                  return TablePrintQRScreen(id: data.tableId);
+                case 1:
+                  return TableMakeOrderScreen(id: data.tableId);
+                case 2:
+                  return TableAddOrderScreen(id: data.tableId);
+                case 3:
+                  return TableCurrentBillScreen(id: data.tableId);
+                case 4:
+                  return TablePaymentScreen(id: data.tableId);
+                default:
+                  return TablePrintQRScreen(
+                    id: data.tableId,
+                  );
+              }
+            })())
+          ],
+        ),
       );
     });
   }
