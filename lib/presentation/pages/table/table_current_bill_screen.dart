@@ -1,4 +1,5 @@
 import 'package:diyo_test/widgets/order_item.dart';
+import 'package:diyo_test/widgets/total_order.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -6,13 +7,12 @@ import '../../../constants/string.dart';
 import '../../../domain/entities/menu.dart';
 import '../../../domain/entities/order.dart';
 import '../../../widgets/custom_elevated_button.dart';
-import '../../../widgets/total_order.dart';
 import '../../providers/tablepage_notifier.dart';
 
-class TableAddOrder extends StatelessWidget {
+class TableCurrentBillScreen extends StatelessWidget {
   final int id;
 
-  const TableAddOrder({Key? key, required this.id}) : super(key: key);
+  const TableCurrentBillScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +26,32 @@ class TableAddOrder extends StatelessWidget {
     var order = Order(menu: menu, quantity: 1);
     return Column(
       children: [
-        Text(StringConstants.orderedMenu),
+        const Text('Current Bill'),
         OrderItem(
           order: order,
-          isBilling: false,
+          isBilling: true,
         ),
         const TotalOrder(totalPrice: 20000),
+        const Divider(
+          color: Colors.black,
+          height: 10,
+          thickness: 1,
+        ),
+        CustomElevatedButton(
+          height: 30,
+          onTap: () {},
+          label: StringConstants.addOrder,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
         CustomElevatedButton(
           height: 30,
           onTap: () {
-            context.read<TablePageNotifier>().updateColumnStatus.execute(id, 3);
-            context.read<TablePageNotifier>().updateMiddleScreen();
-            context.read<TablePageNotifier>().updateRightSidescreen(3);
+            context.read<TablePageNotifier>().updateColumnStatus.execute(id, 4);
+            context.read<TablePageNotifier>().updateRightSidescreen(4);
           },
-          label: StringConstants.addOrder,
-          color: Colors.red,
+          label: StringConstants.billing,
         )
       ],
     );

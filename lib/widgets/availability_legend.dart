@@ -9,12 +9,12 @@ class AvailabilityLegend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: const [
         ColorCube(Colors.red),
-        const SizedBox(
+        SizedBox(
           width: 10,
         ),
-        const Text('Test')
+        Text('Test')
       ],
     );
   }

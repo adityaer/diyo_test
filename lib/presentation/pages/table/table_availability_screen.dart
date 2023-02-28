@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 
 import '../../../widgets/table_circle.dart';
 
-class TableAvailability extends StatefulWidget {
-  const TableAvailability({super.key});
+class TableAvailabilityScreen extends StatefulWidget {
+  const TableAvailabilityScreen({super.key});
 
   @override
-  State<TableAvailability> createState() => _TableAvailabilityState();
+  State<TableAvailabilityScreen> createState() => _TableAvailabilityScreenState();
 }
 
-class _TableAvailabilityState extends State<TableAvailability> {
+class _TableAvailabilityScreenState extends State<TableAvailabilityScreen> {
   @override
   void initState() {
     super.initState();

@@ -1,5 +1,5 @@
-import 'package:diyo_test/presentation/pages/table/status/table_status.dart';
-import 'package:diyo_test/presentation/pages/table/table_availability.dart';
+import 'package:diyo_test/presentation/pages/table/table_status_screen.dart';
+import 'package:diyo_test/presentation/pages/table/table_availability_screen.dart';
 import 'package:diyo_test/presentation/providers/tablepage_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +30,7 @@ class TablePage extends StatelessWidget {
               ),
               Consumer<TablePageNotifier>(builder: (context, data, child) {
                 return data.isTableScreen
-                    ? const TableAvailability()
+                    ? const TableAvailabilityScreen()
                     : const MenuScreen();
               })
             ],

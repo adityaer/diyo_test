@@ -5,10 +5,10 @@ import '../../../constants/string.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../providers/tablepage_notifier.dart';
 
-class TableMakeOrder extends StatelessWidget {
+class TableMakeOrderScreen extends StatelessWidget {
   final int id;
 
-  const TableMakeOrder({Key? key, required this.id}) : super(key: key);
+  const TableMakeOrderScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

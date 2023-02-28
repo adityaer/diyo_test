@@ -5,16 +5,16 @@ import '../../../constants/string.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../providers/tablepage_notifier.dart';
 
-class TablePayment extends StatefulWidget {
+class TablePaymentScreen extends StatefulWidget {
   final int id;
 
-  const TablePayment({Key? key, required this.id}) : super(key: key);
+  const TablePaymentScreen({Key? key, required this.id}) : super(key: key);
 
   @override
-  State<TablePayment> createState() => _TablePaymentState();
+  State<TablePaymentScreen> createState() => _TablePaymentScreenState();
 }
 
-class _TablePaymentState extends State<TablePayment> {
+class _TablePaymentScreenState extends State<TablePaymentScreen> {
   String gender = "";
 
   @override

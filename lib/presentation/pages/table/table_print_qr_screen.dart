@@ -5,10 +5,10 @@ import '../../../constants/string.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../providers/tablepage_notifier.dart';
 
-class TablePrintQR extends StatelessWidget {
+class TablePrintQRScreen extends StatelessWidget {
   final int id;
 
-  const TablePrintQR({Key? key, required this.id}) : super(key: key);
+  const TablePrintQRScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

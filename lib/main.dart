@@ -1,4 +1,4 @@
-import 'package:diyo_test/presentation/pages/homepage/homepage.dart';
+import 'package:diyo_test/presentation/pages/homepage/home_page.dart';
 import 'package:diyo_test/presentation/pages/login/pin_page.dart';
 import 'package:diyo_test/presentation/pages/splashscreen/splash_screen.dart';
 import 'package:diyo_test/presentation/providers/menu_list_notifier.dart';

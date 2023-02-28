@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../constants/string.dart';
-import '../homepage/homepage.dart';
+import '../homepage/home_page.dart';
 
 class PinPage extends StatefulWidget {
   static const routeName = '/pin_page';

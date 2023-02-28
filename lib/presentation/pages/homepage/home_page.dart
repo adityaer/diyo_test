@@ -99,7 +99,7 @@ class HomePageState extends State<HomePage> {
                             color: Colors.white, size: 20),
                         Container(width: 20),
                         Expanded(
-                            child: Text(StringConstants.orderQueueu,
+                            child: Text(StringConstants.orderQueue,
                                 style: const TextStyle(color: Colors.white))),
                       ],
                     ),

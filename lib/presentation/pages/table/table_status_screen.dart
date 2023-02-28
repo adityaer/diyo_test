@@ -1,12 +1,12 @@
 import 'package:diyo_test/constants/string.dart';
-import 'package:diyo_test/presentation/pages/table/table_add_order.dart';
-import 'package:diyo_test/presentation/pages/table/table_make_order.dart';
-import 'package:diyo_test/presentation/pages/table/table_print_qr.dart';
+import 'package:diyo_test/presentation/pages/table/table_add_order_screen.dart';
+import 'package:diyo_test/presentation/pages/table/table_make_order_screen.dart';
+import 'package:diyo_test/presentation/pages/table/table_print_qr_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../providers/tablepage_notifier.dart';
-import '../table_current_bill.dart';
-import '../table_payment.dart';
+import '../../providers/tablepage_notifier.dart';
+import 'table_current_bill_screen.dart';
+import 'table_payment_screen.dart';
 
 class TableStatusScreen extends StatefulWidget {
   final int id;
@@ -36,13 +36,16 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
       }
       return Column(
         children: [
-          Text('Table ${data.tableStatus?.id}'),
+          Padding(padding:const EdgeInsets.symmetric(vertical: 25), child: Text(
+            'Table ${data.tableStatus?.id}',
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+          ),),
           Row(
             children: [
-              const Text('Status : '),
+              Text(StringConstants.statusText),
               Text((() {
                 switch (data.rightSideScreen) {
-                  //(data.tableStatus?.status) {
+                //(data.tableStatus?.status) {
                   case 0:
                     return StringConstants.available;
                   case 1:
@@ -64,19 +67,19 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
           ),
           SingleChildScrollView(child: (() {
             switch (data.rightSideScreen) {
-              //(data.tableStatus?.status) {
+            //(data.tableStatus?.status) {
               case 0:
-                return TablePrintQR(id: data.tableId);
+                return TablePrintQRScreen(id: data.tableId);
               case 1:
-                return TableMakeOrder(id: data.tableId);
+                return TableMakeOrderScreen(id: data.tableId);
               case 2:
-                return TableAddOrder(id: data.tableId);
+                return TableAddOrderScreen(id: data.tableId);
               case 3:
-                return TableCurrentBill(id: data.tableId);
+                return TableCurrentBillScreen(id: data.tableId);
               case 4:
-                return TablePayment(id: data.tableId);
+                return TablePaymentScreen(id: data.tableId);
               default:
-                return TablePrintQR(
+                return TablePrintQRScreen(
                   id: data.tableId,
                 );
             }

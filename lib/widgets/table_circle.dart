@@ -24,8 +24,8 @@ class _TableCircleState extends State<TableCircle> {
           tablePageProvider.updateTableChoose(widget.tableStatus.id);
         },
         child: Container(
-          width: 70,
-          height: 70,
+          width: 60,
+          height: 60,
           decoration: BoxDecoration(
             color: (() {
               switch (widget.tableStatus.status) {

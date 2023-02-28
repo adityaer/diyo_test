@@ -2,7 +2,7 @@ class StringConstants {
 
   static String pageNotFound = 'Page not found :(';
   static String home = 'Home';
-  static String orderQueueu = 'Order Queueu';
+  static String orderQueue = 'Order Queue';
   static String menu = 'Menu';
   static String logout = 'Logout';
   static String enterPIN = 'Enter PIN';
