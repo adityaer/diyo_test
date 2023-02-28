@@ -16,7 +16,18 @@ class TablePage extends StatelessWidget {
         Expanded(
           flex: 3,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
+                child: Image.asset(
+                  'assets/images/diyo_logo.png',
+                  height: 30,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
               Consumer<TablePageNotifier>(builder: (context, data, child) {
                 return data.isTableScreen
                     ? const TableAvailability()
@@ -27,13 +38,13 @@ class TablePage extends StatelessWidget {
         ),
         Expanded(
           flex: 2,
-          child: Column(
-            children: [
-              Consumer<TablePageNotifier>(builder: (context, data, child) {
-                return TableStatusScreen(id: data.tableId,);
-              })
-            ]//const [TableStatusScreen()],
-          ),
+          child: Column(children: [
+            Consumer<TablePageNotifier>(builder: (context, data, child) {
+              return TableStatusScreen(
+                id: data.tableId,
+              );
+            })
+          ]),
         )
       ],
     );

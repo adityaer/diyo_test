@@ -2,6 +2,7 @@ import 'package:diyo_test/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../constants/string.dart';
 import '../../../domain/entities/menu.dart';
 import '../../../domain/entities/order.dart';
 import '../../../widgets/custom_elevated_button.dart';
@@ -9,22 +10,27 @@ import '../../../widgets/total_order.dart';
 import '../../providers/tablepage_notifier.dart';
 
 class TableAddOrder extends StatelessWidget {
-
   final int id;
+
   const TableAddOrder({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var menu = const Menu(id: 1,
+    var menu = const Menu(
+        id: 1,
         name: "Nasi Goreng",
         price: 15000,
-        image: "https://kbu-cdn.com/dk/wp-content/uploads/nasi-goreng-kencur-kemangi.jpg");
+        image:
+            "https://kbu-cdn.com/dk/wp-content/uploads/nasi-goreng-kencur-kemangi.jpg");
 
     var order = Order(menu: menu, quantity: 1);
     return Column(
       children: [
-        const Text('Ordered Menu'),
-        OrderItem(order: order, isBilling: false,),
+        Text(StringConstants.orderedMenu),
+        OrderItem(
+          order: order,
+          isBilling: false,
+        ),
         const TotalOrder(totalPrice: 20000),
         CustomElevatedButton(
           height: 30,
@@ -33,7 +39,7 @@ class TableAddOrder extends StatelessWidget {
             context.read<TablePageNotifier>().updateMiddleScreen();
             context.read<TablePageNotifier>().updateRightSidescreen(3);
           },
-          label: 'Add Order',
+          label: StringConstants.addOrder,
           color: Colors.red,
         )
       ],

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../constants/string.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../providers/tablepage_notifier.dart';
 
 class TablePayment extends StatefulWidget {
   final int id;
+
   const TablePayment({Key? key, required this.id}) : super(key: key);
 
   @override
@@ -19,11 +21,11 @@ class _TablePaymentState extends State<TablePayment> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Action'),
+        Text(StringConstants.action),
         Column(
           children: [
             RadioListTile<String>(
-              title: Text("Cash"),
+              title: Text(StringConstants.cash),
               value: "cash",
               groupValue: gender,
               onChanged: (value) {
@@ -33,7 +35,7 @@ class _TablePaymentState extends State<TablePayment> {
               },
             ),
             RadioListTile<String>(
-              title: Text("Credit Card"),
+              title: Text(StringConstants.creditCard),
               value: "cc",
               groupValue: gender,
               onChanged: (value) {
@@ -43,7 +45,7 @@ class _TablePaymentState extends State<TablePayment> {
               },
             ),
             RadioListTile<String>(
-              title: Text("Debit Card"),
+              title: Text(StringConstants.debitCard),
               value: "debit",
               groupValue: gender,
               onChanged: (value) {
@@ -53,7 +55,7 @@ class _TablePaymentState extends State<TablePayment> {
               },
             ),
             RadioListTile<String>(
-              title: Text("QRIS"),
+              title: Text(StringConstants.qris),
               value: "qris",
               groupValue: gender,
               onChanged: (value) {
@@ -67,10 +69,13 @@ class _TablePaymentState extends State<TablePayment> {
         CustomElevatedButton(
           height: 30,
           onTap: () {
-            context.read<TablePageNotifier>().updateColumnStatus.execute(widget.id, 0);
+            context
+                .read<TablePageNotifier>()
+                .updateColumnStatus
+                .execute(widget.id, 0);
             context.read<TablePageNotifier>().updateRightSidescreen(0);
           },
-          label: 'Payment',
+          label: StringConstants.payment,
           color: Colors.red,
         )
       ],

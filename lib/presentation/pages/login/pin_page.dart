@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../../constants/string.dart';
 import '../homepage/homepage.dart';
 
 class PinPage extends StatefulWidget {
@@ -31,8 +32,8 @@ class _PinPageState extends State<PinPage> {
           const SizedBox(
             height: 30,
           ),
-          const Text(
-            'Enter PIN',
+          Text(
+            StringConstants.enterPIN,
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
           ),
           const SizedBox(
@@ -139,7 +140,7 @@ class _PinPageState extends State<PinPage> {
   void _checkPin(String pin) {
     if (pin == '1234') {
       Fluttertoast.showToast(
-          msg: "Success",
+          msg: StringConstants.success,
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -153,7 +154,7 @@ class _PinPageState extends State<PinPage> {
       );
     } else {
       Fluttertoast.showToast(
-          msg: "Failed",
+          msg: StringConstants.failed,
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,

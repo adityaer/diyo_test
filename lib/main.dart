@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
+import 'constants/string.dart';
 import 'environtment/environment.dart';
 import 'injection.dart' as di;
 
@@ -27,14 +28,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-            create: (_) => di.locator<MenuListNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<MenuListNotifier>()),
         ChangeNotifierProvider(
             create: (_) => di.locator<SplashScreenNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<TablePageNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TablePageNotifier>()),
       ],
       child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Diyo Test App',
           theme: ThemeData(
             primarySwatch: Colors.blue,
@@ -49,16 +49,14 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(builder: (_) => PinPage());
               default:
                 return MaterialPageRoute(builder: (_) {
-                  return const Scaffold(
+                  return Scaffold(
                     body: Center(
-                      child: Text('Page not found :('),
+                      child: Text(StringConstants.pageNotFound),
                     ),
                   );
                 });
             }
-          }
-      ),
+          }),
     );
   }
 }
-

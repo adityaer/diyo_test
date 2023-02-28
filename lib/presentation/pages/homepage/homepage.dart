@@ -1,7 +1,6 @@
+import 'package:diyo_test/constants/string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../../../utils/colors.dart';
 import '../table/table_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,116 +44,122 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     this.context = context;
     Widget widget = Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarIconBrightness: Brightness.dark,
-            statusBarColor: AppColors.grey_3,
-          ),
-          title: const Text("Drawer White",
-              style: TextStyle(color: AppColors.grey_80)),
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.menu, color: AppColors.grey_60),
-            onPressed: () {
-              scaffoldKey.currentState!.openDrawer();
-            },
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.close, color: AppColors.grey_60),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        drawer: Drawer(
+          backgroundColor: Colors.red,
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                const SizedBox(height: 20),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Icon(
+                        Icons.menu,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.arrow_back_ios,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 40,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: <Widget>[
+                        const Icon(Icons.home, color: Colors.white, size: 20),
+                        Container(width: 20),
+                        Expanded(
+                            child: Text(StringConstants.home,
+                                style: const TextStyle(color: Colors.white))),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(height: 10),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 40,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: <Widget>[
+                        const Icon(Icons.data_usage,
+                            color: Colors.white, size: 20),
+                        Container(width: 20),
+                        Expanded(
+                            child: Text(StringConstants.orderQueueu,
+                                style: const TextStyle(color: Colors.white))),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(height: 10),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 40,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: <Widget>[
+                        const Icon(Icons.class_, color: Colors.white, size: 20),
+                        Container(width: 20),
+                        Expanded(
+                            child: Text(StringConstants.menu,
+                                style: const TextStyle(color: Colors.white))),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(height: 10),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 40,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: <Widget>[
+                        const Icon(Icons.power_settings_new,
+                            color: Colors.white, size: 20),
+                        Container(width: 20),
+                        Expanded(
+                            child: Text(
+                          StringConstants.logout,
+                          style: const TextStyle(color: Colors.white),
+                        )),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ]),
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(height: 8),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 40,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    children: <Widget>[
-                      const Icon(Icons.domain,
-                          color: AppColors.grey_20, size: 20),
-                      Container(width: 20),
-                      const Expanded(
-                          child: Text(
-                        "Home",
-                      )),
-                    ],
-                  ),
-                ),
-              ),
-              Container(height: 10),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 40,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    children: <Widget>[
-                      const Icon(Icons.data_usage,
-                          color: AppColors.grey_20, size: 20),
-                      Container(width: 20),
-                      const Expanded(
-                          child: Text(
-                        "Order Queue",
-                      )),
-                    ],
-                  ),
-                ),
-              ),
-              Container(height: 10),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 40,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    children: <Widget>[
-                      const Icon(Icons.class_,
-                          color: AppColors.grey_20, size: 20),
-                      Container(width: 20),
-                      const Expanded(
-                          child: Text(
-                        "Menu",
-                      )),
-                    ],
-                  ),
-                ),
-              ),
-              Container(height: 10),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 40,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    children: <Widget>[
-                      const Icon(Icons.power_settings_new,
-                          color: AppColors.grey_20, size: 20),
-                      Container(width: 20),
-                      const Expanded(
-                          child: Text(
-                        "Logout",
-                      )),
-                    ],
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
-      ),
-      body: TablePage(),
-    );
+        body: SafeArea(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.menu, color: Colors.black),
+                onPressed: () {
+                  scaffoldKey.currentState?.openDrawer();
+                },
+              ),
+              const Expanded(child: TablePage())
+            ],
+          ),
+        ));
     return widget;
   }
 }

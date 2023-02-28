@@ -1,10 +1,9 @@
+import 'package:diyo_test/constants/string.dart';
 import 'package:diyo_test/presentation/pages/table/table_add_order.dart';
 import 'package:diyo_test/presentation/pages/table/table_make_order.dart';
 import 'package:diyo_test/presentation/pages/table/table_print_qr.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../widgets/custom_elevated_button.dart';
 import '../../../providers/tablepage_notifier.dart';
 import '../table_current_bill.dart';
 import '../table_payment.dart';
@@ -32,7 +31,9 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<TablePageNotifier>(builder: (context, data, child) {
-      if (data.tableId != data.tableStatus?.id) data.getSingleTableStatus(data.tableId);
+      if (data.tableId != data.tableStatus?.id) {
+        data.getSingleTableStatus(data.tableId);
+      }
       return Column(
         children: [
           Text('Table ${data.tableStatus?.id}'),
@@ -40,19 +41,20 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
             children: [
               const Text('Status : '),
               Text((() {
-                switch (data.rightSideScreen) {//(data.tableStatus?.status) {
+                switch (data.rightSideScreen) {
+                  //(data.tableStatus?.status) {
                   case 0:
-                    return 'Available';
+                    return StringConstants.available;
                   case 1:
-                    return 'Seated';
+                    return StringConstants.seated;
                   case 2:
-                    return 'Seated';
+                    return StringConstants.seated;
                   case 3:
-                    return 'Ordered';
+                    return StringConstants.ordered;
                   case 4:
-                    return 'Billing';
+                    return StringConstants.billing;
                   default:
-                    return 'Available';
+                    return StringConstants.available;
                 }
               })())
             ],
@@ -61,7 +63,8 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
             height: 20,
           ),
           SingleChildScrollView(child: (() {
-            switch (data.rightSideScreen) {//(data.tableStatus?.status) {
+            switch (data.rightSideScreen) {
+              //(data.tableStatus?.status) {
               case 0:
                 return TablePrintQR(id: data.tableId);
               case 1:
@@ -73,10 +76,11 @@ class _TableStatusScreenState extends State<TableStatusScreen> {
               case 4:
                 return TablePayment(id: data.tableId);
               default:
-                return TablePrintQR(id: data.tableId,);
+                return TablePrintQR(
+                  id: data.tableId,
+                );
             }
-          })() //TableCurrentBill(),
-              )
+          })())
         ],
       );
     });

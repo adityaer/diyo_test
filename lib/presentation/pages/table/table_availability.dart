@@ -23,27 +23,17 @@ class _TableAvailabilityState extends State<TableAvailability> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Consumer<TablePageNotifier>(builder: (context, data, child) {
-      return GridView.count(
-        crossAxisCount: 3,
-        children: <Widget>[
-          for (var table in data.tableStatusList)
-            TableCircle(
-              tableStatus: table,
-            ),
-        ],
-      );
-    })
-        /*GridView.count(
-        crossAxisCount: 3,
-        children: <Widget>[
-          for (int i = 0; i < 7; i++)
-            TableCircle(
-              tableName: 'Table ${i + 1}',
-              status: 1,
-            ),
-        ],
-      ),*/
+      child: Consumer<TablePageNotifier>(builder: (context, data, child) {
+        return GridView.count(
+          crossAxisCount: 3,
+          children: <Widget>[
+            for (var table in data.tableStatusList)
+              TableCircle(
+                tableStatus: table,
+              ),
+          ],
         );
+      }),
+    );
   }
 }
