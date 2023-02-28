@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_logging_interceptor/dio_logging_interceptor.dart';
 import 'package:diyo_test/domain/usecases/check_tbltablestatus.dart';
+import 'package:diyo_test/domain/usecases/get_all_table_status.dart';
 import 'package:diyo_test/domain/usecases/get_table_billing.dart';
 import 'package:diyo_test/domain/usecases/get_table_order.dart';
 import 'package:diyo_test/domain/usecases/get_table_status.dart';
@@ -8,6 +9,7 @@ import 'package:diyo_test/domain/usecases/insert_billing.dart';
 import 'package:diyo_test/domain/usecases/update_column_status.dart';
 import 'package:diyo_test/presentation/providers/menu_list_notifier.dart';
 import 'package:diyo_test/presentation/providers/splashscreen_notifier.dart';
+import 'package:diyo_test/presentation/providers/tablepage_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'data/datasources/app_local_data_source.dart';
 import 'data/datasources/app_remote_data_source.dart';
@@ -44,7 +46,12 @@ void init() {
     () => SplashScreenNotifier(locator(), locator()),
   );
 
+  locator.registerFactory(
+    () => TablePageNotifier(locator()),
+  );
+
   locator.registerLazySingleton(() => CheckTblTableStatus(locator()));
+  locator.registerLazySingleton(() => GetAllTableStatus(locator()));
   locator.registerLazySingleton(() => GetMenuList(locator()));
   locator.registerLazySingleton(() => GetTableBilling(locator()));
   locator.registerLazySingleton(() => GetTableOrder(locator()));

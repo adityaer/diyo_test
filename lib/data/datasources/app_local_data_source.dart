@@ -7,6 +7,8 @@ import 'db/database_helper.dart';
 abstract class AppLocalDataSource {
   Future<bool> isTblTableStatusEmpty();
 
+  Future<List<StatusModel>> getAllTableStatus();
+
   Future<String> insertStatus(StatusModel statusModel);
 
   Future<StatusModel?> getTableStatusById(int id);
@@ -37,6 +39,12 @@ class AppLocalDataSourceImpl implements AppLocalDataSource {
     } catch (e) {
       throw DatabaseException(e.toString());
     }
+  }
+
+  @override
+  Future<List<StatusModel>> getAllTableStatus() async {
+    final result = await databaseHelper.getAllTableStatus();
+    return result.map((data) => StatusModel.fromMap(data)).toList();
   }
 
   @override

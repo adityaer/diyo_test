@@ -1,6 +1,8 @@
 import 'package:diyo_test/presentation/pages/table/status/table_status.dart';
 import 'package:diyo_test/presentation/pages/table/table_availability.dart';
+import 'package:diyo_test/presentation/providers/tablepage_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../menu/menu_screen.dart';
 
@@ -14,9 +16,12 @@ class TablePage extends StatelessWidget {
         Expanded(
           flex: 3,
           child: Column(
-            children: const [
-              TableAvailability()
-              //MenuScreen()
+            children: [
+              Consumer<TablePageNotifier>(builder: (context, data, child) {
+                return data.isTableScreen
+                    ? TableAvailability()
+                    : const MenuScreen();
+              })
             ],
           ),
         ),

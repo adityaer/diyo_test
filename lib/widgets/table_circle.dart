@@ -19,8 +19,8 @@ class _TableCircleState extends State<TableCircle> {
       child: GestureDetector(
         onTap: () {},
         child: Container(
-          width: 80,
-          height: 80,
+          width: 70,
+          height: 70,
           decoration: BoxDecoration(
             color: (() {
               switch (widget.status) {

@@ -48,7 +48,7 @@ class DatabaseHelper {
         order_id TEXT PRIMARY KEY,
         id INTEGER,
         date TEXT,
-        order TEXT,
+        order_data TEXT
       );
     ''');
 
@@ -58,7 +58,7 @@ class DatabaseHelper {
         id INTEGER,
         total INTEGER,
         payment_type TEXT,
-        payment_date TEXT,
+        payment_date TEXT
       );
     ''');
   }
@@ -72,6 +72,13 @@ class DatabaseHelper {
     );
 
     return result.isEmpty;
+  }
+
+  Future<List<Map<String, dynamic>>> getAllTableStatus() async {
+    final db = await database;
+    final List<Map<String, dynamic>> results = await db!.query(_tblTableStatus);
+
+    return results;
   }
 
   Future<int> insertStatus(StatusModel status) async {

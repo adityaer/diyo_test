@@ -2,6 +2,7 @@ import 'package:diyo_test/presentation/pages/homepage/homepage.dart';
 import 'package:diyo_test/presentation/pages/splashscreen/splash_screen.dart';
 import 'package:diyo_test/presentation/providers/menu_list_notifier.dart';
 import 'package:diyo_test/presentation/providers/splashscreen_notifier.dart';
+import 'package:diyo_test/presentation/providers/tablepage_notifier.dart';
 import 'package:diyo_test/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -29,6 +30,8 @@ class MyApp extends StatelessWidget {
             create: (_) => di.locator<MenuListNotifier>()),
         ChangeNotifierProvider(
             create: (_) => di.locator<SplashScreenNotifier>()),
+        ChangeNotifierProvider(
+            create: (_) => di.locator<TablePageNotifier>()),
       ],
       child: MaterialApp(
           title: 'Diyo Test App',

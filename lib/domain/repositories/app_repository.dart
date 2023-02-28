@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import '../../presentation/pages/table/status/table_status.dart';
 import '../../utils/failure.dart';
 import '../entities/menu.dart';
 import '../entities/table_billing.dart';
@@ -12,6 +11,8 @@ abstract class AppRepository {
   // database
 
   Future<Either<Failure, bool>> isTblTableStatusEmpty();
+
+  Future<Either<Failure, List<TableStatus>>> getAllTableStatus();
 
   Future<Either<Failure, String>> insertStatus(TableStatus tableStatus);
 

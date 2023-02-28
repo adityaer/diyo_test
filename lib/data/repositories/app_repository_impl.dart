@@ -34,6 +34,12 @@ class AppRepositoryImpl implements AppRepository {
   }
 
   @override
+  Future<Either<Failure, List<TableStatus>>> getAllTableStatus() async {
+    final result = await localDataSource.getAllTableStatus();
+    return Right(result.map((data) => data.toEntity()).toList());
+  }
+
+  @override
   Future<Either<Failure, List<Menu>>> getMenuList() async {
     try {
       final result = await remoteDataSource.getMenuList();
