@@ -7,4 +7,6 @@ List<TableStatus> tableList = [
   TableStatus(id: 4, tableName: 'Table 4', status: 0),
   TableStatus(id: 5, tableName: 'Table 5', status: 0),
   TableStatus(id: 6, tableName: 'Table 6', status: 0),
+  TableStatus(id: 7, tableName: 'Table 7', status: 0),
+  TableStatus(id: 8, tableName: 'Table 8', status: 0),
 ];

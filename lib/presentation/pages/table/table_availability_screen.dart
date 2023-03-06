@@ -1,4 +1,5 @@
 import 'package:diyo_test/presentation/providers/tablepage_notifier.dart';
+import 'package:diyo_test/widgets/availability_legend.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,17 +29,32 @@ class _TableAvailabilityScreenState extends State<TableAvailabilityScreen> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Consumer<TablePageNotifier>(builder: (context, data, child) {
-        return GridView.count(
-          crossAxisCount: 3,
-          children: <Widget>[
-            for (var table in data.tableStatusList)
-              TableCircle(
-                tableStatus: table,
-              ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Consumer<TablePageNotifier>(builder: (context, data, child) {
+              return GridView.count(
+                crossAxisCount: 3,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: <Widget>[
+                  for (var table in data.tableStatusList)
+                    TableCircle(
+                      tableStatus: table,
+                    ),
+                ],
+              );
+            }),
+            const SizedBox(
+              height: 25,
+            ),
+            const AvailabilityLegend(status: 0),
+            const AvailabilityLegend(status: 1),
+            const AvailabilityLegend(status: 3),
+            const AvailabilityLegend(status: 4)
           ],
-        );
-      }),
+        ),
+      ),
     );
   }
 }
