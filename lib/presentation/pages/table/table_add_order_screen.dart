@@ -27,6 +27,7 @@ class TableAddOrderScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: data.orderList.length,
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               final order = data.orderList[index];
               return OrderItem(
